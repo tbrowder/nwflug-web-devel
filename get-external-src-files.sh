@@ -14,6 +14,10 @@ openssl-1.0.2.tar.gz \
 pcre2-10.00.tar.bz2 \
 "
 
+mkdir src
+(cd src;
 for f in $FILS ; do
   $CMD $URL/$f
 done
+)
+
