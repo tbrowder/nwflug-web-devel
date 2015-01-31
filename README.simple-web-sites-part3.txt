@@ -18,16 +18,7 @@ should be obtained from the Dropbox first:
 
 Transfer necessary files to the server:
 
-  $ scp -C xfer-files-to-server.sh \
-    apache-config.sh \
-    apache2-init.d-script \
-    apr-1.5.1.tar.bz2 \
-    apr-util-1.5.4.tar.bz2 \
-    httpd-2.4.10.tar.bz2 \
-    httpd.conf \
-    openssl-1.0.1i.tar.gz \
-    openssl-config.sh \
-    pcre-8.35.tar.bz2
+  $ scp -C -r src am1:
 
 Note file 'openssl-1.0.1i.tar.gz.sha1':
 
