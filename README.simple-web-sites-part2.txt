@@ -4,6 +4,59 @@ Simple Web Sites
 Part 2 - Obtaining a Remote Server
 ----------------------------------
 
+First, make sure we have a public/private key pair for ssh use on our
+local host.
+
+If you have a pair it should be in directory "$HOME/.ssh":
+
+  $ ls -l $HOME/.ssh/*
+  -rw------- 1 tbrowde tbrowde  791 Aug 27 15:35 /home/tbrowde/.ssh/authorized_keys
+  -rw------- 1 tbrowde tbrowde  135 Dec  2 09:30 /home/tbrowde/.ssh/config
+  -rw------- 1 tbrowde tbrowde 1679 Aug 27 15:35 /home/tbrowde/.ssh/id_rsa
+  -rw------- 1 tbrowde tbrowde  396 Aug 27 15:35 /home/tbrowde/.ssh/id_rsa.pub
+  -rw------- 1 tbrowde tbrowde 9388 Jan 31 07:56 /home/tbrowde/.ssh/known_hosts
+
+Files "id_rsa" and "id_rsa.pub" are my private and matching public
+keys, respectively.  The "authorized_keys" file will not be used for
+our situation.  The "known_hosts" file is used by the system for
+storing remote host information. The "config" file will be mentioned
+later.
+
+If you do not have the files or the ".ssh' directory, procede as
+follows (here I take the defaults):
+
+  $ cd
+  $ mkdir .ssh
+  $ ssh-keygen -t rsa
+  Enter file in which to save the key (/home/tbrowde/.ssh/id_rsa):
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
+  Your identification has been saved in /home/tbrowde/.ssh/id_rsa.
+  Your public key has been saved in /home/tbrowde/.ssh/id_rsa.pub.
+  The key fingerprint is:
+  98:b8:8a:63:0d:30:32:7d:73:41:39:a0:45:69:93:64 tbrowde@juvat2
+  The key's randomart image is:
+  +--[ RSA 2048]----+
+  |   oE=..         |
+  |   += +          |
+  | ... . o         |
+  |= . o..o         |
+  |oo ..oo S        |
+  | .   .           |
+  |  o .            |
+  |.o o             |
+  |o..              |
+  +-----------------+
+  $
+
+Change the privileges (permissions) on the directory:
+
+  $ chmod 600 .ssh
+
+Change the privileges (permissions) on the directory's files:
+
+  $ chmod 400 .ssh/*
+
 Getting a free, Amazon cloud server
 -----------------------------------
 
@@ -27,8 +80,15 @@ Select:
 
   EC2
 
-Note that I am in the US West Region, but the default is US East.  You
-should use US East unless you know a good reason not to.
+On the left hand menu select
+
+  NETWORK & SECURITY | Key Pairs | Import Key Pair
+
+You will need a unique name for the pair (I use my local host name).  You
+can either browse for the public key or insert its contents (it's in
+ASCII).
+
+WARNING:  Be sure and use the PUBLIC key, NOT the private key.
 
 Choose a server to start. Select:
 
@@ -36,36 +96,65 @@ Choose a server to start. Select:
  
 Click "Free Tier Only"
 
-I selected (at the bottom of the list):
+I selected the first Ubuntu instance:
 
-  Ubuntu Server 14.04 LTS (PV) - ami-68c2a858 (32-bit)
+ Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-9a562df2
 
-Note that the "68c2a858" is a unique identifier and will be different
+Note that the "9a562df2" is a unique identifier and may be different
 for your instance.
 
-It uses:
-
-  SSD: up to 30 Gb storage
+Amazon recommends using HVM types for new instances.
 
 (Note that not all the following instructions will work if you select
 another server.)
 
-Get the instance public IP: 54.191.61.9
+Get the instance public IP: 54.84.43.106 (your instance will be different).
 
-Create a key pair, select "Key Pairs".
+For ease of access add en entry to your "/etc/hosts" file.  As root,
+edit the file and add these lines (am1 is the local name I've chosen
+for the remote instance):
 
-  I named mine ' amazon1' and placed file 'amazon1.pem' in the
-  directory above this working directory.
+  # Amazon EC2:
+  54.84.43.106 am1
 
-Change the privileges (permissions) on the file:
+To login you normally need to preface the host name with your user
+name on the remote host ("ubuntu" for Ubuntu images).  To ease login
+we edit (or create) the "config" file so it looks like this:
 
-  $ chmod 400 ../amazon1.pem
+  $ cat $HOME/.ssh/config
+  # see man ssh_config for help
 
-To login, in the working directory enter:
+  Host *
+  ForwardX11 yes
+  ServerAliveInterval 45
 
- $ ssh -i ../amazon1.pem ubuntu@54.191.61.9
+  Host am1
+  User ubuntu
 
-(See file 'login.sh' for a script to simplify your login.)
+Then, to login, in the working directory enter:
+
+  $ ssh am1
+  The authenticity of host 'am1 (54.84.43.106)' can't be established.
+  ECDSA key fingerprint is fc:68:8f:fc:92:bf:db:ef:3c:dd:2e:dd:4f:35:4c:4a.
+  Are you sure you want to continue connecting (yes/no)? yes
+  Warning: Permanently added 'am1' (ECDSA) to the list of known hosts.
+  Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-45-generic x86_64)
+
+   * Documentation:  https://help.ubuntu.com/
+
+    System information as of Sat Jan 31 13:59:44 UTC 2015
+
+    System load: 0.0               Memory usage: 5%   Processes:       82
+    Usage of /:  12.7% of 7.74GB   Swap usage:   0%   Users logged in: 0
+
+    Graph this data and manage this system at:
+      https://landscape.canonical.com/
+
+    Get cloud support with Ubuntu Advantage Cloud Guest:
+      http://www.ubuntu.com/business/services/cloud
+
+
+  Last login: Sat Jan 31 13:56:56 2015 from fl-67-235-143-222.dhcp.embarqhsd.net
 
 Get the instance current:
 
@@ -81,17 +170,22 @@ I had to restart the system due to a kernel upgrade:
 
 and it automatically logged me out as expected.
 
-To transfer files from the local host to your server:
+To transfer files from the local host to your remote server (the '-C'
+means compress; note the ':' after the remote server's name):
 
- $ scp -C -i ../amazon1.pem <files...> ubuntu@54.191.61.9:
+ $ scp -C <files...> am1:
 
-To transfer directories from the local host to your server you need
-the '-r' (recursive) option (it is harmless to use it for files only):
+To transfer directories from the local host to your remote server you
+need the '-r' (recursive) option (it is harmless to use it for files
+only):
 
- $ scp -r -C -i ../amazon1.pem <dirs..> ubuntu@54.191.61.9:
+ $ scp -r -C <dirs..> am1:
 
-(See file 'xfer-files-to-server.sh' for a script to simplify your
-transfers.)
+To transfer directories or files from the remote server to your local
+host (note the quotes are needed around multiple files and directories
+which must be separated by spaces; note also the dot at the end):
+
+ $ scp -r -C am1:"<dirs.. files...>" .
 
 Prepare to install Apache on the remote server
 ----------------------------------------------
