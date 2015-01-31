@@ -1,0 +1,86 @@
+<!-- content -->
+
+    <h3>Resources</h3>
+
+    <br />
+
+    <h4>2014-06-02</h4>
+
+
+    <ul>
+      <li>The D Programming Language, designed to be an improved C++ 
+          (<a href="http://dlang.org/">http://dlang.org/</a>).
+      </li>
+
+      <li>Doctor Dobb's, a portal for computer programmers and hardware enthusiasts
+          (<a href="http://www.drdobbs.com/">http://www.drdobbs.com/</a>).
+      </li>
+
+      <li>Raspberry Pi, a mini-computer 
+          (<a href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>).
+      </li>
+
+      <li>SELinux, a Linux kernel-level security tool
+          (<a href="http://selinuxproject.org/page/Main_Page">http://selinuxproject.org/</a>).
+      </li>
+
+      <li>Linux Dash, a graphical utility for monitoring remote servers 
+          (<a href="https://github.com/afaqurk/linux-dash">https://github.com/afaqurk/linux-dash</a>).  
+          An article describing it is 
+          <a href="http://www.linuxpromagazine.com/Online/Blogs/Productivity-Sauce/Monitor-Your-server-with-Linux-Dash">here</a>.
+      </li>
+
+      <li>Gnuplot, a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, 
+          VMS, and many other platforms 
+          (<a href="http://www.gnuplot.info/">http://www.gnuplot.info/</a>).
+      </li>
+    </ul>
+
+    <h4>2014-05-05</h4>
+
+    <ul>
+      <li>The book <cite>The Linux Command Line</cite> 
+          (<a href="http://linuxcommand.org/tlcl.php">http://linuxcommand.org/tlcl.php</a>)
+          is recommended by Mike Kaiser who says the book and its site have &quot;helped me out so much since I started 
+          really learning the command line some weeks ago.&quot;   Note the downloadable PDF version
+          is free.
+      </li>
+
+      <li>Django (<a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a>) 
+          is a high-level 
+	  Python framework for web sites.  It is being considered for this site.
+      </li>
+
+      <li>Fosswiki 
+          (<a href="http://foswiki.org/">http://foswiki.org/</a>) 
+          is a free, enterprise collaboration platform
+          being considered for this site.
+      </li>
+
+      <li>Codecademy 
+          (<a href="http://www.codecademy.com/">http://www.codecademy.com/</a>) 
+          is a site dedicated to teaching computer programming.
+      </li>
+
+      <li>Vim, the programmer's power editor 
+          (<a href="http://www.vim.org/">http://www.vim.org/</a>).
+      </li>
+	
+    </ul>
+
+    <h4>2014-04-07</h4>
+
+    <ul>
+      <li>Qualys SSL Labs web site security check 
+          (<a href="https://www.ssllabs.com/ssltest/">https://www.ssllabs.com/ssltest/</a>).
+      </li>
+ 
+      <li>DistroWatch, a site that tracks news and page rankings for Linux distributions
+          (<a href="http://distrowatch.com/">http://distrowatch.com/</a>).
+      </li>
+
+      <li>DomainTuno, a web site analysis tool
+          (<a href="http://www.domaintuno.com/">http://www.domaintuno.com/</a>).
+      </li>
+
+    </ul>

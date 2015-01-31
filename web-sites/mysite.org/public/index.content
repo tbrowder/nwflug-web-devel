@@ -1,0 +1,67 @@
+<!-- content -->
+
+    <h3>My Web Site</h3>
+    <ul>
+        <li>This is the web site for the Northwest Florida Linux User Group (LUG).
+        </li>
+        <li>The primary purpose of the group is to educate interested persons in the
+           use of the non-Windows, non-Mac operating system (OS) called <strong>GNU/Linux</strong>.
+        </li>
+        <li>For more information on LUGs see the
+           <a href="http://www.tldp.org/HOWTO/User-Group-HOWTO.html">
+           Linux User Group HOW-TO</a>.
+        </li>
+        <li>The group meets on the first Monday of every month in Room 400 of the
+           <a href="http://www.nicevilleumc.org/about/directions.html">
+              Niceville United Methodist Church</a>.
+           The meeting starts at 5:00 PM and ends by 7:00 PM.
+        </li>
+    </ul>
+
+    <h3>Next Meeting</h3>
+    <ul>
+      <li>The next meeting will be held on Monday, 7 July 2014.
+          Attendees are encouraged to bring their laptops.
+      </li>
+      <li>Proposed agenda:
+          <ul>
+            <li>"Recommended Linux distribution" - all</li>
+            <li>"bash scripting" - David Bentley (tentative)</li>
+            <li>"An inexpensive ($5/month) Linux <a href="https://www.digitalocean.com/">cloud server</a>" - Tom Browder</li>
+            <li>"Community projects" - all</li>
+            <li>"Publicity, web site improvements" - all</li>
+          </ul>
+      </li>
+    </ul>
+
+    <h3>Free Introduction to Linux Course</h3>
+    <ul>
+      <li>The <a href="http://www.linuxfoundation.org/">Linux Foundation</a>
+          has
+          <a href="http://arstechnica.com/information-technology/2014/03/2400-introduction-to-linux-course-will-be-free-and-online-this-summer/"
+          >announced</a> its &quot;Introduction to Linux&quot;
+          course will be free and online this summer. See this
+          <a href="https://www.edx.org/course/linuxfoundationx/linuxfoundationx-lfs101x-introduction-1621"
+          >link</a> to register.
+      </li>
+    </ul>
+
+    <h3>NWFLUG Public Resources</h3>
+    <ul>
+       <li>Files and documents presented at NWFLUG and associated meetings
+       are available on Tom's  Dropbox site <a href="http://tinyurl.com/nwflug-main">here</a>.
+       </li>
+       <li>Text files, such as scripts and source code,
+       are availble on Tom's GitHub site <a href="https://github.com/tbrowder/nwflug">here</a>. Use
+       the the command 'git clone https://github.com/tbrowder/nwflug.git' to download the code onto your
+       own computer.
+       </li>
+    </ul>
+
+    <h3>Contact</h3>
+    <ul>
+       <li>Contact Tom Browder
+            (<a href="mailto:tom.browder@gmail.com">tom.browder@gmail.com</a>)
+             for more information.
+       </li>
+    </ul>

@@ -1,0 +1,21 @@
+<!-- content -->
+
+
+    <ul>
+      <!-- 
+             There must be an href for each desired 'page-name.html'
+             (auto-generated from 'page-name.content').  There may be
+             external links as well (such as the Dropbox site below).
+
+             Each page may be described as desired inside the "a"
+             element, e.g., 'Home' for 'index.htm'.
+      -->
+
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./meetings.html">Meeting Notes</a></li>
+      <li><a href="./projects.html">Community Projects</a></li>
+      <li><a href="./resources.html">Resources</a></li>
+      <li><a href="http://tinyurl.com/nwflug-main">Dropbox</a></li>
+      <li><a href="./topics.html">Topics</a></li>
+      <li><a href="./credits.html">Credits</a></li>
+    </ul>

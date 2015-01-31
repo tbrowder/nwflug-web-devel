@@ -1,0 +1,38 @@
+<!-- content -->
+
+    <h3>Community Projects</h3>
+
+    <br />
+
+    <p>Following is a list of community projects in various unfinished states as indicated.
+    </p>
+
+    <ul>
+      <li>Linux Award for local science fairs (feasibilty determination)
+      </li>
+
+      <li>Computech support (preliminary discussion):
+        <ul>
+          <li>logistics, e.g.,
+            <ol>
+              <li>check-in</li>
+              <li>help desk</li>
+              <li>set up, take down</li>
+            </ol>
+          </li>
+          <li>presentations, e.g., 
+            <ol>
+              <li>Using the Raspberry Pi for fun and useful projects </li>
+	      <li>Test driving Linux distros with VirtualBox</li>
+              <li>Introduction to computer programming</li>
+              <li>Public key encryption</li>
+            </ol>
+          </li> 
+        </ul>
+
+      </li>
+
+      <li>Public Linux installation parties (planning)
+      </li>
+
+    </ul>
