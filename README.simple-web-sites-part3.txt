@@ -11,9 +11,14 @@ shall also install openssl beforehand and use during the Apache build.
 We will also need to install some other prerequisites as seen
 below--see the 'apache-config.sh' file for particulars.
 
+Necessary source files are not in the working directory and they
+should be obtained from the Dropbox first:
+
+  $ ./get-external-src-files.sh
+
 Transfer necessary files to the server:
 
-  $ xfer-files-to-server.sh \
+  $ scp -C xfer-files-to-server.sh \
     apache-config.sh \
     apache2-init.d-script \
     apr-1.5.1.tar.bz2 \
@@ -40,7 +45,7 @@ check the others.
 
 In another terminal window ssh to the remote host:
 
-  $ login.sh go
+  $ ssh am1
   am1$
 
 We may need to update the server.  As root:
@@ -57,7 +62,7 @@ In that case do this:
 
   # touch /forcefsck
 
-which will schedule an fsck run on the next boot (whic you may want to
+which will schedule an fsck run on the next boot (which you may want to
 force).
 
 If a reboot is needed:
