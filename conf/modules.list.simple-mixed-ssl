@@ -158,7 +158,7 @@ LoadModule alias_module modules/mod_alias.so
 
 #LoadModule rewrite_module modules/mod_rewrite.so
 
-LoadModule wsgi_module modules/mod_wsgi.so
+#LoadModule wsgi_module modules/mod_wsgi.so
 
 # END OF LIST
 
