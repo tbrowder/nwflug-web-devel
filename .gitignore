@@ -10,3 +10,5 @@ web-sites/mysite.org/public/projects.html
 web-sites/mysite.org/public/resources.html
 web-sites/mysite.org/public/topics.html
 src/*
+setuid-progs/on-server-copy-httpdconf
+setuid-progs/on-server-copy-websites
