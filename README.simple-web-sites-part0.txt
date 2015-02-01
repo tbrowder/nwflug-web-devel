@@ -17,3 +17,9 @@ See file "VBVA-installation.pdf" on the dropbox site for detailed
 instructions.
 
 The user name for the image is 'ctech' and the password is 'Ctech!'.
+
+Up next
+=======
+
+In Part 1 we willl look at a simple static web site and view it
+locally.

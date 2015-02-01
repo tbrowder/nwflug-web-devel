@@ -51,6 +51,9 @@ Summary
 
 You should now have a working local web site.
 
+Up next
+=======
+
 In Part 2 we will obtain and set up a remote server.
 
 In the meantime, if you wish you might buy a domain name.  I
@@ -67,5 +70,4 @@ from:
 For multiple virtual hosting, you can get a two-year certificate for
 $59 (unlimited certificate generation for a 350-day period after
 identity validation).
-
 

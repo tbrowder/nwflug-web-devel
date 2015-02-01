@@ -206,4 +206,7 @@ Summary
 You should now have a working remote server ready to install and
 configure Apache.
 
+Up next
+=======
+
 In Part 3 we will install and configure Apache on the remote server.

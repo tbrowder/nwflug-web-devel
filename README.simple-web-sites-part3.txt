@@ -156,6 +156,17 @@ Finally, shut down the site:
 
   am1$ sudo /usr/local/apache2/bin/apachectl stop
 
-In Part 4 we'll add a script to automatically start the server at
-boot time, and we'll work on user and group permissions, directories, and
+If you're interested in a free domain name, see:
+
+  http://frenom.com/
+
+For free TLS/SSL certificates see:
+
+  http://www.startssl.com/
+
+Up next
+=======
+
+In Part 4 we'll add a script to automatically start the server at boot
+time, and we'll work on user and group permissions, directories, and
 scripts to ease submitting our sites to the server (publishing).

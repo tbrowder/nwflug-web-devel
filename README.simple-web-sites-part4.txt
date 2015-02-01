@@ -54,11 +54,19 @@ Directory layout - server
 
   /home/web-sites
 
-  /home/tbrowde/
+  /home/ubuntu/
     web-sites-incoming/
 
 Updating files on the server
 ----------------------------
+
+Edit files as desired in directory "web-sites" and its subdirectories.
+Then execute:
+
+  $
+
+
+
 
 
 
