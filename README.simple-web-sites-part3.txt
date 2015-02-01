@@ -62,7 +62,6 @@ build (make), and install the following programs:
 OpenSSL:
 -------
 
-  am1$ cd src
   am1$ tar -tvzf openssl-1.0.2.tar.gz
 
 The first command was to ensure the archive unpacked into its own
