@@ -3,7 +3,7 @@
 # remote host (uses 3rd party setup)
 RHOST=am1
 
-USAGE="Usage: $0 go | gen | gen-only | cp-only"
+USAGE="Usage: $0 all | gen | gen-only | <site name> "
 if [[ -z $1 ]] ; then
   echo
   echo $USAGE
@@ -12,16 +12,10 @@ if [[ -z $1 ]] ; then
   exit
 fi
 
+# sites with generated pages
 GENSITES="\
 mysite.org \
 "
-
-if [[ $1 == "cp-only" ]] ; then
-  # copying web sites on the server
-  ssh -v ${RHOST} "./copywebsites go"
-  exit
-fi
-
 # first generate pages if requested
 if [[ $1 == "gen" || $1 == "gen-only" ]] ; then
   for w in $GENSITES ; do
@@ -35,37 +29,41 @@ if [[ $1 == "gen" || $1 == "gen-only" ]] ; then
   fi
 fi
 
-# note trailing slash on 'web-sites"
-FROMDIR="./web-sites/"
-TODIR="${RHOST}:web-sites-incoming"
+# need some functions
+source web-site-funcs.bash
 
-OPTS="-avzr"
-# careful:
-DEL="--del"
-#DEL=""
-#                 --exclude="*Resources*" \
-rsync $OPTS $DEL \
-  --exclude="*~" \
-  --exclude="*.template" \
-  --exclude="*.content" \
-  --exclude="*.source" \
-  --exclude="*.pm" \
-  --exclude="*.orig" \
-  --exclude="gen-pages.pl" \
-  --exclude="t" \
-  --exclude="tt" \
-  --exclude="ttt" \
-  --exclude="tmp-pics" \
-  $FROMDIR $TODIR
+#========= sync GEN sites ================
+if [[ $1 == "gen" || $1 == "all" ]] ; then
+  for w in $GENSITES ; do
+    sync_site $w
+  done
 
-#now send resources
-FROMDIR2="./web-sites/Resources/"
-TODIR2="${RHOST}:web-sites-incoming/Resources"
-rsync $OPTS $DEL --exclude="*~" \
-                 --exclude="t" \
-                 --exclude="tt" \
-                 --exclude="ttt" \
-  $FROMDIR2 $TODIR2
+  sync_Resources
 
-# copy web sites on the server
-ssh -v ${RHOST} './copywebsites go'
+  # cleanup auto-generated files?
+  # no, keep manual for now
+  #./delete-auto-gen-files.pl go
+
+  #echo "Now go to the remote host ($RHOST) and, as root, execute"
+  #echo "  ./cp-web-site-files.sh go"
+    #echo "Then, still as root, execute"
+  #echo "  apachectl graceful"
+
+  # copying web sites
+  ssh $RHOST './copytbrowdewebsites go'
+  exit
+fi
+#========= end sync ALL sites ================
+
+#========= sync ONE site ================
+for w in $GENSITES ; do
+  if [[ $w == $1 ]] ; then
+    echo "Synching known site '$w'..."
+    #echo "Exiting after commands..."
+    sync_site $w
+    ssh $RHOST './copytbrowdewebsites go'
+    exit
+  fi
+done
+
+echo "WARNING:  Site '$1' is unknown."
