@@ -127,15 +127,20 @@ httpd:
   am1$ ../apache-config.sh go
   am1$ make
   am1$ sudo make install
-  am1$ sudo ldconfig
   am1$ cd
   am1$ sudo cp httpd.conf /usr/local/apache2/conf
 
-Test it:
+Test it (as root):
 
-  am1$ sudo /usr/local/apache2/bin/apachectl start
-  am1$ sudo /usr/local/apache2/bin/apachectl start
+  am1$ sudo su
+  am1#
+  am1# /usr/local/apache2/bin/apachectl start -t
+  Syntax OK
+  am1# /usr/local/apache2/bin/apachectl start
+  am1# /usr/local/apache2/bin/apachectl start
   httpd (pid 10141) already running
+  am1# exit
+  am1$
 
 NOTE: Make sure you have opened inbound HTTP traffic in your EC2
 console 9NETWORK 7 SECURITY | Security Groups).  (CAUTION: Don't
