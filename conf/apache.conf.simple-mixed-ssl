@@ -28,7 +28,8 @@ Include conf/modules.list
 
 # enforce https
 # Use HTTP Strict Transport Security to force client to use secure connections only
-Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+#!  UNCOMMENT BELOW IF NEEDED ==================================
+#!  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
 # recommended for better security by Apache User Manual:
 # but it requires mod_userdir
@@ -37,20 +38,23 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 #   Inter-Process Session Cache:
 #   Configure the SSL Session Cache: First the mechanism
 #   to use and second the expiring timeout (in seconds).
-SSLSessionCache        "shmcb:/usr/local/apache2/logs/ssl_scache(512000)"
-SSLSessionCacheTimeout  300
+#!  UNCOMMENT BELOW IF NEEDED ==================================
+#!  SSLSessionCache        "shmcb:/usr/local/apache2/logs/ssl_scache(512000)"
+#!  SSLSessionCacheTimeout  300
 
 Header always append X-Frame-Options SAMEORIGIN
 
 TypesConfig conf/mime.types
 
 Listen 80
-<IfModule mod_ssl.c>
-  Listen 443
-</IfModule>
+#!  UNCOMMENT BELOW IF NEEDED ==================================
+#!  <IfModule mod_ssl.c>
+#!    Listen 443
+#!  </IfModule>
 
-# server SSL/TLS certificate data
-Include conf/server-cert.data
+#!  UNCOMMENT BELOW IF NEEDED ==================================
+#!  # server SSL/TLS certificate data
+#!  Include conf/server-cert.data
 
 #<Location /server-status>
 #    SetHandler server-status
@@ -109,51 +113,38 @@ Alias /Resources /home/web-sites/Resources
     DocumentRoot /home/web-sites/${PROJECT}.${TLD}/public
   </VirtualHost>
 </Macro>
-Use VHOST_NONTLS psrr                  info
+Use VHOST_NONTLS mysite      org
 UndefMacro VHOST_NONTLS
 #### END NON-SSL SITES ####
 
-#### SSL-ONLY SITES ####
-<Macro VHOST_SPECTLS ${PROJECT} ${TLD}>
-  <VirtualHost *:80>
-    ServerName  ${PROJECT}.${TLD}
-    ServerAlias www.${PROJECT}.${TLD}
-    # enforce ssl/tls
-    Redirect Permanent / https://computertech-nwf.org/
-  </VirtualHost>
-</Macro>
-Use VHOST_SPECTLS nwfcomputertech  org
-Use VHOST_SPECTLS computertechnwf  org
-UndefMacro VHOST_SPECTLS
 
-<Macro VHOST_TLS ${PROJECT} ${TLD}>
-  <VirtualHost *:80>
-    ServerName  ${PROJECT}.${TLD}
-    ServerAlias www.${PROJECT}.${TLD}
-    # enforce ssl/tls
-    Redirect Permanent / https://${PROJECT}.${TLD}/
-  </VirtualHost>
-
-  ##### BEGIN SSL OPERATIONS #####
-  <IfModule mod_ssl.c>
-  ################################
-    <VirtualHost *:443>
-      SSLEngine on
-      ServerName  ${PROJECT}.${TLD}
-      ServerAlias www.${PROJECT}.${TLD}
-      DocumentRoot /home/web-sites/${PROJECT}.${TLD}/public
-      <Directory /home/web-sites/${PROJECT}.${TLD}/public>
-        SSLRequireSSL
-      </Directory>
-    </VirtualHost>
-  ##### END SSL OPERATIONS #####
-  </IfModule>
-  ##############################
-</Macro>
-Use VHOST_TLS computertech-nwf      org
-Use VHOST_TLS freestatesofamerica   org
-Use VHOST_TLS tbrowder              net
-Use VHOST_TLS nwflug                org
-Use VHOST_TLS nwflorida             info
-UndefMacro VHOST_TLS
+#!  UNCOMMENT BELOW IF NEEDED ==================================
+#!  #### TLS/SSL-ONLY SITES ####
+#!  <Macro VHOST_TLS ${PROJECT} ${TLD}>
+#!    <VirtualHost *:80>
+#!      ServerName  ${PROJECT}.${TLD}
+#!      ServerAlias www.${PROJECT}.${TLD}
+#!      # enforce ssl/tls
+#!      Redirect Permanent / https://${PROJECT}.${TLD}/
+#!    </VirtualHost>
+#!  
+#!    ##### BEGIN SSL OPERATIONS #####
+#!    <IfModule mod_ssl.c>
+#!    ################################
+#!      <VirtualHost *:443>
+#!        SSLEngine on
+#!        ServerName  ${PROJECT}.${TLD}
+#!        ServerAlias www.${PROJECT}.${TLD}
+#!        DocumentRoot /home/web-sites/${PROJECT}.${TLD}/public
+#!        <Directory /home/web-sites/${PROJECT}.${TLD}/public>
+#!          SSLRequireSSL
+#!        </Directory>
+#!      </VirtualHost>
+#!    ##### END SSL OPERATIONS #####
+#!    </IfModule>
+#!    ##############################
+#!  </Macro>
+#!  # TLS sites
+#!  # Use VHOST_TLS somesite              org
+#!  UndefMacro VHOST_TLS
 
