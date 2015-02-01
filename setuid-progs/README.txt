@@ -8,10 +8,12 @@ Modify the httpd.conf file accordingly:
   User apache
   Group web-content
 
-Two programs to be transfered to the remote server in your user account:
+Four programs to be transferred to the remote server in your user account:
 
-  copywebsites                  # a binary executable
-  cp-incoming-web-site-files.sh # a shell script to copy files and set permissions
+  on-server-copy-websites      # a binary executable
+  on-server-copy-websites.sh   # a shell script to copy files and set permissions
+  on-server-copy-httpdconf     # a binary executable
+  on-server-copy-httpdconf.sh  # a shell script to copy files and set permissions
 
 Steps:
 
@@ -21,9 +23,5 @@ Steps:
 
 2. Transfer the files to the server:
 
-  $ ./xfer-files-to-server.sh copywebsites cp-incoming-web-site-files.sh
-
-3. Login to the server:
-
-  $ ./login.sh
+  $ make xfer
 

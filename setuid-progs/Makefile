@@ -1,7 +1,8 @@
-PROGS := on-server-copy-websites   on-server-copy-httpdconf
-SRC   := $(patsubst %, %.c, $(PROGS))
+PROGS   := on-server-copy-websites   on-server-copy-httpdconf
+SRC     := $(patsubst %, %.c, $(PROGS))
+SHPROGS := $(patsubst %, %.sh, $(PROGS))
 
-BITS := 32
+BITS := 64
 
 all: $(PROGS)
 
@@ -10,3 +11,6 @@ all: $(PROGS)
 
 clean:
 	-rm -f $(PROGS)
+
+xfer:
+	scp $(PROGS) $(SHPROGS) am1:
