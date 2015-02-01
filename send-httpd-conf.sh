@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RHOST=do1
+RHOST=am1
 
 USAGE="Usage: $0 go"
 
@@ -34,9 +34,11 @@ FROMDIR=./conf
 TODIR=httpd.conf.d
 
 FILS="\
-apache.conf \
+httpd.conf \
 modules.list \
 "
+
+ssh $RHOST "if [ ! -d '$TODIR' ]; then mkdir httpd.conf.d ; fi"
 
 for f in $FILS
 do
@@ -47,9 +49,11 @@ do
   #rsync -avz $DOC $RHOST:$TODIR/$f
 
   echo "copying '$DOC' to remote 'httpd.conf.d/$f'..."
+
   scp -C $DOC $RHOST:$TODIR/$f
 
 done
 
-echo "Now go to the remote host ($RHOST) and, as root, execute:"
-echo "  ./cp-conf-files.sh'"
+# remote suid (root) binary executable
+SUIDCMD='./on-server-copy-httpdconf go'
+ssh $RHOST $SUIDCMD
