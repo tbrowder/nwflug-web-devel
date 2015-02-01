@@ -109,7 +109,7 @@ fi
 # note: build mod_wsgi after installing apache
 
 # we build all modules for now (all shared except mod_ssl)
-export LDFLAGS="-L${SSLDIR}"
+export LDFLAGS="-L${SSLDIR}/lib"
 $SRCDIR/configure                          \
     --prefix=/usr/local/apache2            \
     --with-included-apr                    \
