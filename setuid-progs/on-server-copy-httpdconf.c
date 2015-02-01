@@ -39,7 +39,7 @@ main(int argc, char** argv)
   }
 
   setuid(0);
-  system("./cp-incoming-web-site-files.sh go" );
+  system("./on-server-copy-httpdconf.sh go" );
 
   return 0;
 }
