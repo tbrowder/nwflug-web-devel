@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # make sure this points to the right source dir:
-VER=2.4.10
+VER=2.4.12
 LDIR=..
 SRCDIR=${LDIR}/httpd-$VER
 
