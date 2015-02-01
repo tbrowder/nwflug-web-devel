@@ -5,7 +5,7 @@
 ServerRoot "/usr/local/apache2"
 
 # need a global server name to allow apache to start
-ServerName tbrowder.net
+ServerName mysite.org
 
 # allow for various indices:
 DirectoryIndex index.html index.htm
