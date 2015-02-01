@@ -108,8 +108,6 @@ fi
 
 # note: build mod_wsgi after installing apache
 
-export LDFLAGS="-L/opt/openssl/lib"
-
 # we build all modules for now (all shared except mod_ssl)
 export LDFLAGS="-L${SSLDIR}"
 $SRCDIR/configure                          \
