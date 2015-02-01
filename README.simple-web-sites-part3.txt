@@ -124,9 +124,10 @@ httpd:
   am1$ ln -s apr-1.5.1 apr
   am1$ ln -s apr-util-1.5.4 apr-util
   am1$ cd ..
-  am1$ ../apache-config.sh
+  am1$ ../apache-config.sh go
   am1$ make
   am1$ sudo make install
+  am1$ sudo ldconfig
   am1$ cd
   am1$ sudo cp httpd.conf /usr/local/apache2/conf
 
@@ -137,7 +138,8 @@ Test it:
   httpd (pid 10141) already running
 
 NOTE: Make sure you have opened inbound HTTP traffic in your EC2
-console.  (CAUTION: Don't delete inbound SSH!)
+console 9NETWORK 7 SECURITY | Security Groups).  (CAUTION: Don't
+delete inbound SSH!)
 
 Point your local browser at your IP (from Part 2): 
 
