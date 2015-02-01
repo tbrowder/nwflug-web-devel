@@ -95,9 +95,9 @@ that.
 pcre:
 ----
 
-  am1$ tar -tvjf pcre-8.35.tar.bz2
-  am1$ tar -xvjf pcre-8.35.tar.bz2
-  am1$ cd pcre-8.35
+  am1$ tar -tvjf pcre2-10.00.tar.bz2
+  am1$ tar -xvjf pcre2-10.00.tar.bz2
+  am1$ cd pcre2-10.00
   am1$ ./configure
   ...
   am1$ make
@@ -112,13 +112,13 @@ pcre:
 httpd:
 -----
 
-  am1$ tar -tvjf httpd-2.4.10.tar.bz2
-  am1$ tar -xvjf httpd-2.4.10.tar.bz2
+  am1$ tar -tvjf httpd-2.4.12.tar.bz2
+  am1$ tar -xvjf httpd-2.4.12.tar.bz2
   am1$ tar -tvjf apr-1.5.1.tar.bz2
   am1$ tar -xvjf apr-1.5.1.tar.bz2
   am1$ tar -tvjf apr-util-1.5.4.tar.bz2
   am1$ tar -xvjf apr-util-1.5.4.tar.bz2
-  am1$ cd httpd-2.4.10
+  am1$ cd httpd-2.4.12
   am1$ mv ../apr-1.5.1 srclib
   am1$ mv ../apr-util-1.5.4 srclib
   am1$ cd srclib
@@ -142,7 +142,7 @@ console.  (CAUTION: Don't delete inbound SSH!)
 
 Point your local browser at your IP (from Part 2): 
 
-  54.191.61.9
+  54.84.43.106
 
 and you should see "It works!"
 
