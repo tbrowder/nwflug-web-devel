@@ -157,5 +157,5 @@ Finally, shut down the site:
   am1$ sudo /usr/local/apache2/bin/apachectl stop
 
 In Part 4 we'll add a script to automatically start the server at
-boot, and we'll work on user and group permissions, directories, and
-scripts ease submitting our sites to the server (publishing).
+boot time, and we'll work on user and group permissions, directories, and
+scripts to ease submitting our sites to the server (publishing).
