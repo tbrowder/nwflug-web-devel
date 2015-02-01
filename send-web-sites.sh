@@ -16,6 +16,7 @@ fi
 GENSITES="\
 mysite.org \
 "
+
 # first generate pages if requested
 if [[ $1 == "gen" || $1 == "gen-only" ]] ; then
   for w in $GENSITES ; do
@@ -31,6 +32,11 @@ fi
 
 # need some functions
 source web-site-funcs.bash
+
+ssh $RHOST "if [ ! -d '$TODIR' ]; then mkdir web-sites-incoming ; fi"
+
+# remote suid (root) binary executable
+SUIDCMD='./on-server-copy-websites go'
 
 #========= sync GEN sites ================
 if [[ $1 == "gen" || $1 == "all" ]] ; then
@@ -50,7 +56,7 @@ if [[ $1 == "gen" || $1 == "all" ]] ; then
   #echo "  apachectl graceful"
 
   # copying web sites
-  ssh $RHOST './copytbrowdewebsites go'
+  ssh $RHOST $SUIDCMD
   exit
 fi
 #========= end sync ALL sites ================
@@ -61,7 +67,7 @@ for w in $GENSITES ; do
     echo "Synching known site '$w'..."
     #echo "Exiting after commands..."
     sync_site $w
-    ssh $RHOST './copytbrowdewebsites go'
+    ssh $RHOST $SUIDCMD
     exit
   fi
 done
