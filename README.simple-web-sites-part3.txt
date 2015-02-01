@@ -18,21 +18,7 @@ should be obtained from the Dropbox first:
 
 Transfer necessary files to the server:
 
-  $ scp -C -r src am1:
-
-Note file 'openssl-1.0.1i.tar.gz.sha1':
-
-  $ cat openssl-1.0.1i.tar.gz.sha1
-  74eed314fa2c93006df8d26cd9fc630a101abd76
-
-We can check the tar archive to see that it yields the same sha1
-digest:
-
-  $ sha1sum openssl-1.0.1i.tar.gz
-  74eed314fa2c93006df8d26cd9fc630a101abd76  openssl-1.0.1i.tar.gz
-
-I have checked all the archives after downloading them, so we will not
-check the others.
+  $ scp -C src/* other-src/* am1:
 
 In another terminal window ssh to the remote host:
 
@@ -62,29 +48,30 @@ If a reboot is needed:
 
 And log back in:
 
-  $ login.sh go
+  $ ssh am1
 
 (There may be a delay if the reboot has not completed due to an fsck check.)
   
 Following the guidance in 'apache-config.sh' we unpack, configure,
 build (make), and install the following programs:
 
-  openssl (note latest version is 1.0.1j, 15 Oct)
+  openssl
   pcre
   httpd
 
 OpenSSL:
 -------
 
-  am1$ tar -tvzf openssl-1.0.1i.tar.gz
+  am1$ cd src
+  am1$ tar -tvzf openssl-1.0.2.tar.gz
 
 The first command was to ensure the archive unpacked into its own
 directory--otherwise we would would have a mess of unwanted files in
 this directory.  Note that Windows developers are notorious for doing
 that.
 
-  am1$ tar -xvzf openssl-1.0.1i.tar.gz
-  am1$ cd openssl-1.0.1i
+  am1$ tar -xvzf openssl-1.0.2.tar.gz
+  am1$ cd openssl-1.0.2
   am1$ ../openssl-config.sh
   Usage: ../openssl-config.sh go
   Configures openssl source (without FIPS).
